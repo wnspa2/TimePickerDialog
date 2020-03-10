@@ -49,7 +49,7 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
         int height = getResources().getDimensionPixelSize(R.dimen.picker_height);
 
         Window window = getDialog().getWindow();
-        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, height);//Here!
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, height);// Here!
         window.setGravity(Gravity.BOTTOM);
     }
 
@@ -72,10 +72,13 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View view = inflater.inflate(R.layout.timepicker_layout, null);
         TextView cancel = (TextView) view.findViewById(R.id.tv_cancel);
+        cancel.setTextSize(mPickerConfig.mWheelTVSize);
         cancel.setOnClickListener(this);
         TextView sure = (TextView) view.findViewById(R.id.tv_sure);
+        sure.setTextSize(mPickerConfig.mWheelTVSize);
         sure.setOnClickListener(this);
         TextView title = (TextView) view.findViewById(R.id.tv_title);
+        title.setTextSize(mPickerConfig.mWheelTVSize);
         View toolbar = view.findViewById(R.id.toolbar);
 
         title.setText(mPickerConfig.mTitleString);
@@ -96,13 +99,15 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
             sureClicked();
         }
     }
-    
+
     /*
-    * @desc This method returns the current milliseconds. If current milliseconds is not set,
-    *       this will return the system milliseconds.
-    * @param none
-    * @return long - the current milliseconds.
-    */
+     * @desc This method returns the current milliseconds. If current milliseconds
+     * is not set, this will return the system milliseconds.
+     * 
+     * @param none
+     * 
+     * @return long - the current milliseconds.
+     */
     public long getCurrentMillSeconds() {
         if (mCurrentMillSeconds == 0)
             return System.currentTimeMillis();
@@ -111,11 +116,13 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
     }
 
     /*
-    * @desc This method is called when onClick method is invoked by sure button. A Calendar instance is created and 
-    *       initialized. 
-    * @param none
-    * @return none
-    */
+     * @desc This method is called when onClick method is invoked by sure button. A
+     * Calendar instance is created and initialized.
+     * 
+     * @param none
+     * 
+     * @return none
+     */
     void sureClicked() {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
@@ -205,27 +212,27 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
             return this;
         }
 
-        public Builder setYearText(String year){
+        public Builder setYearText(String year) {
             mPickerConfig.mYear = year;
             return this;
         }
 
-        public Builder setMonthText(String month){
+        public Builder setMonthText(String month) {
             mPickerConfig.mMonth = month;
             return this;
         }
 
-        public Builder setDayText(String day){
+        public Builder setDayText(String day) {
             mPickerConfig.mDay = day;
             return this;
         }
 
-        public Builder setHourText(String hour){
+        public Builder setHourText(String hour) {
             mPickerConfig.mHour = hour;
             return this;
         }
 
-        public Builder setMinuteText(String minute){
+        public Builder setMinuteText(String minute) {
             mPickerConfig.mMinute = minute;
             return this;
         }
@@ -240,6 +247,5 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
         }
 
     }
-
 
 }
